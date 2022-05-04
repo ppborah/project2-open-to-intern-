@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect(
-    "mongodb+srv://project2:zE31ye3l4$SOuN@cluster0.ouxmp.mongodb.net/project2db?retryWrites=true&w=majority",
+    "mongodb+srv://project2:zE31ye3l4$SOuN@cluster0.ouxmp.mongodb.net/group90Database?retryWrites=true&w=majority",
     { useNewUrlParser: true }
   )
   .then(() => console.log("mongoDB is connected"))
