@@ -6,7 +6,7 @@ const internSchema = new mongoose.Schema(
     name: {
       type: String,
       required: "name is a required field",
-      trim: true,
+      trim:true
     },
     email: {
       type: String,
@@ -22,6 +22,7 @@ const internSchema = new mongoose.Schema(
     collegeId: {
       type: ObjectId,
       ref: "College",
+      trim:true
     },
     isDeleted: {
       type: Boolean,

@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const controllers = require("../controllers/collegeController");
+const collegeControllers = require("../controllers/collegeController");
+const internControllers = require("../controllers/internController");
 
-router.get("/test", function (req, res) {
-  res.send("working");
-});
 
-router.post("/colleges", controllers.createCollege);
+
+router.post("/colleges", collegeControllers.createCollege);
+router.post("/interns", internControllers.createIntern);
+router.get('/collegeDetails',collegeControllers.getCollegeDetails)
+
 
 module.exports = router;
