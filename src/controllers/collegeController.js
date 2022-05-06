@@ -21,11 +21,11 @@ const createCollege = async function (req, res) {
 
     let checkCollegeName = await collegeModel.findOne({ name: Name }); /*Check College Name From DB*/
 
-    if (checkCollegeName) return res.status(404).send({ status: false, msg: "College Name Already Exists" });
+    if (checkCollegeName) return res.status(400).send({ status: false, msg: "College Name Already Exists" });
 
     let checkLogo = await collegeModel.findOne({ logoLink: data.logoLink }); /*Check URL From DB*/
 
-    if (checkLogo) return res.status(404).send({ status: false, msg: "Logo is Already Present" });
+    if (checkLogo) return res.status(400).send({ status: false, msg: "Logo is Already Present" });
 
     if (!/^(http(s)?:\/\/)?(www.)?([a-zA-Z0-9])+([\-\.]{1}[a-zA-Z0-9]+)\.[a-zA-Z]{2,5}(:[0-9]{1,5})?(\/[^\s])?$/gm.test(data.logoLink))
 
@@ -84,7 +84,7 @@ const getCollegeDetails = async function (req, res) {
     // let collegeData={...checkCollegeName.toJSON()}
     // collegeData.insert = getAllInternData
 
-    res.status(201).send({ status: true, msg: "Successful", data: collegeData });
+    res.status(200).send({ status: true, msg: "Successful", data: collegeData });
 
   }
 
