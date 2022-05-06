@@ -39,11 +39,11 @@ const createIntern = async function (req, res) {
 
         if (emailCheck) return res.status(400).send({ status: false, msg: "EmailID Already Exists" })
 
-        let CollgeFullName=data.collegeName.trim()        
+        let collge_Name=data.collegeName.toLowerCase().trim()        
         
-        let checkCollege = await collegeModel.findOne({ fullName: CollgeFullName , isDeleted: false }) /*Check College Full Name From DB*/
+        let checkCollege = await collegeModel.findOne({ name: collge_Name , isDeleted: false }) /*Check College Name From DB*/
          
-        if (!checkCollege) return res.status(400).send({status: false, message:`${CollgeFullName} : No such college Name Not Found!`});
+        if (!checkCollege) return res.status(400).send({status: false, message:`${collge_Name} : No such college Name Not Found!`});
 
         let college_Id = checkCollege._id   /*Get College Id from CheckCollege*/
 
@@ -51,7 +51,7 @@ const createIntern = async function (req, res) {
 
         const saveInterData = await internModel.create(data);  /*Create Intern here*/
 
-        return res.status(201).send({ status: true, message: `Successfully applied for internship at ${CollgeFullName}.`, data: saveInterData })
+        return res.status(201).send({ status: true, message: `Successfully applied for internship at ${collge_Name}.`, data: saveInterData })
     }
     catch (err) {
 
