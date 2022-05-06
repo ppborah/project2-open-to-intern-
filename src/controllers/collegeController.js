@@ -27,7 +27,7 @@ const createCollege = async function (req, res) {
 
     if (checkLogo) return res.status(400).send({ status: false, msg: "Logo is Already Present" });
 
-    if (!/^(http(s)?:\/\/)?(www.)?([a-zA-Z0-9])+([\-\.]{1}[a-zA-Z0-9]+)\.[a-zA-Z]{2,5}(:[0-9]{1,5})?(\/[^\s])?$/gm.test(data.logoLink))
+    if (!/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/.test(data.logoLink))
 
       return res.status(400).send({ status: false, msg: `${data.logoLink} is not a valid URL` }) /*validate URL */
 
